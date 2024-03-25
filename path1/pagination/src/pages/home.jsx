@@ -4,11 +4,9 @@ import Pagination from "../components/pagination";
 const HomePage = () => {
   const userList = UserList();
 
-  console.log(userList);
-
   return (
     <>
-      <Pagination limit={5} totalPage={20} />
+      <Pagination data={userList.length} limit={5} pagePerData={20} />
     </>
   );
 };

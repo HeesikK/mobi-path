@@ -35,7 +35,6 @@ export const UserList = () => {
   return Array(200)
     .fill()
     .map((array, index) => ({
-      // page: Math.floor(index / 20) + 1,
       id: index + 1,
       name: generateName(),
       birthday: generateBirthday(),
