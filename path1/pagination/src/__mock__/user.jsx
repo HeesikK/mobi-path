@@ -34,7 +34,7 @@ export const UserList = () => {
 
   return Array(200)
     .fill()
-    .map((array, index) => ({
+    .map((_, index) => ({
       id: index + 1,
       name: generateName(),
       birthday: generateBirthday(),

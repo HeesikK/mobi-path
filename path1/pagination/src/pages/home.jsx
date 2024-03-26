@@ -1,14 +1,7 @@
-import { UserList } from "../__mock__/user";
-import Pagination from "../components/pagination";
+import User from "../components/user";
 
 const HomePage = () => {
-  const userList = UserList();
-
-  return (
-    <>
-      <Pagination data={userList.length} limit={5} pagePerData={20} />
-    </>
-  );
+  return <User />;
 };
 
 export default HomePage;
