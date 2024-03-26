@@ -1,18 +1,16 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 
-const Pagination = ({ user, limit, pagePerUser }) => {
+const Pagination = ({ user, setUserList, limit, pagePerUser }) => {
   // 총 페이지 수
   const totalPage = Math.ceil(user.length / pagePerUser);
-
-  const [userList, setUserList] = useState(user.slice(0, pagePerUser));
 
   // 랜더링되는 페이지 그룹
   const [pageGroup, setPageGroup] = useState(1);
 
   const totalPageArray = Array.from({ length: totalPage }, (_, idx) => idx + 1);
   const paginationArray = Array.from({ length: Math.ceil(totalPage / limit) }, (_, idx) => totalPageArray.slice(idx * limit, idx * limit + limit));
-  console.log("페이지 그룹", paginationArray);
+
   // "<<" 버튼 클릭
   const onFirstPage = () => {
     setPageGroup(1);
@@ -38,70 +36,51 @@ const Pagination = ({ user, limit, pagePerUser }) => {
     setUserList(user.slice(pagePerUser * (e.target.textContent - 1), pagePerUser * e.target.textContent));
   };
 
+  /*
+    "<<", "<", ">", ">>" 버튼을 클릭하면 해당 pageGroup의 첫 번째 페이지(인덱스)로 이동
+    useEffect 의존성 배열에 pageGroup를 추가하여 pageGroup이 바뀔때만 userList를 변경
+  */
   useEffect(() => {
     setUserList(user.slice(pagePerUser * (paginationArray[pageGroup - 1][0] - 1), pagePerUser * paginationArray[pageGroup - 1][0]));
   }, [pageGroup]);
 
   return (
     <Wrapper>
-      {userList.map((el) => (
-        <UserWrapper>
-          <div>{el.id}</div>
-          <div>{el.name}</div>
-          <div>{el.birthday}</div>
-          <div>{el.number}</div>
-        </UserWrapper>
+      <PageButton onClick={onFirstPage} disabled={pageGroup === 1}>
+        {"<<"}
+      </PageButton>
+      <PageButton onClick={onPrevPage} disabled={pageGroup === 1}>
+        {"<"}
+      </PageButton>
+      {paginationArray[pageGroup - 1].map((page) => (
+        <PageButton onClick={onMoveCurrentPage}>{page}</PageButton>
       ))}
-      <PaginationWrapper>
-        <button onClick={onFirstPage} disabled={pageGroup === 1}>
-          {"<<"}
-        </button>
-        <button onClick={onPrevPage} disabled={pageGroup === 1}>
-          {"<"}
-        </button>
-        {paginationArray[pageGroup - 1].map((page) => (
-          <button onClick={onMoveCurrentPage}>{page}</button>
-        ))}
-        <button onClick={onNextPage} disabled={pageGroup === Math.ceil(totalPage / limit)}>
-          {">"}
-        </button>
-        <button onClick={onLastPage} disabled={pageGroup === Math.ceil(totalPage / limit)}>
-          {">>"}
-        </button>
-      </PaginationWrapper>
+      <PageButton onClick={onNextPage} disabled={pageGroup === Math.ceil(totalPage / limit)}>
+        {">"}
+      </PageButton>
+      <PageButton onClick={onLastPage} disabled={pageGroup === Math.ceil(totalPage / limit)}>
+        {">>"}
+      </PageButton>
     </Wrapper>
   );
 };
 
 export default Pagination;
 
-const UserWrapper = styled.div`
-  display: flex;
-  > div {
-    margin: 0px 8px;
-    padding: 8px;
-  }
-`;
-
-const PaginationWrapper = styled.div`
-  > button {
-    width: 32px;
-    height: 32px;
-    margin: 0px 8px;
-    padding: 8px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    &:hover {
-      border-radius: 50%;
-      background: #e3e3e3;
-    }
-  }
-`;
-
 const Wrapper = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+`;
+
+const PageButton = styled.button`
+  width: 32px;
+  height: 32px;
+  margin: 0px 8px;
+  padding: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  &:hover {
+    border-radius: 50%;
+    background: #e3e3e3;
+  }
 `;

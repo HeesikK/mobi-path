@@ -1,14 +1,26 @@
-import { UserList } from "../__mock__/user";
-import Pagination from "./pagination";
+import styled from "styled-components";
 
-const User = () => {
-  const user = UserList();
+const User = ({ userList }) => {
   return (
     <>
-      {/* Pagination의 Props로 전달할 값은 user(mock 데이터), limit(사용자에 보여질 페이지 수), pagePeruser(페이지 당 유저수) */}
-      <Pagination user={user} limit={3} pagePerUser={20} />
+      {userList.map((el) => (
+        <UserTable>
+          <div>{el.id}</div>
+          <div>{el.name}</div>
+          <div>{el.birthday}</div>
+          <div>{el.number}</div>
+        </UserTable>
+      ))}
     </>
   );
 };
 
 export default User;
+
+const UserTable = styled.div`
+  display: flex;
+  > div {
+    margin: 0px 8px;
+    padding: 8px;
+  }
+`;
