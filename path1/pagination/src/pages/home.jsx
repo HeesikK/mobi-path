@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { UserList } from "../__mock__/user";
-import User from "../components/user";
+import User from "../components/userTable";
 import Pagination from "../components/pagination";
 import styled from "styled-components";
 

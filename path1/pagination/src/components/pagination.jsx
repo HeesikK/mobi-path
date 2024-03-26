@@ -11,6 +11,8 @@ const Pagination = ({ user, setUserList, limit, pagePerUser }) => {
   const totalPageArray = Array.from({ length: totalPage }, (_, idx) => idx + 1);
   const paginationArray = Array.from({ length: Math.ceil(totalPage / limit) }, (_, idx) => totalPageArray.slice(idx * limit, idx * limit + limit));
 
+  console.log("paginationArray값은?", paginationArray);
+
   // "<<" 버튼 클릭
   const onFirstPage = () => {
     setPageGroup(1);
