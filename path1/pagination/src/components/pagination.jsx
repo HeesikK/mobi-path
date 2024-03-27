@@ -9,34 +9,38 @@ const Pagination = ({ user, setUserList, limit, pagePerUser }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const params = searchParams.get("page") ?? "1";
 
-  const [currentPage, setCurrentPage] = useState();
-
-  console.log("파람값은?", params);
+  // console.log("파람값은?", params);
+  const [currentPage, setCurrentPage] = useState(Number(params));
 
   // 랜더링되는 페이지 그룹
-  const [pageGroup, setPageGroup] = useState(1);
+  const pageGroup = Math.ceil(currentPage / limit);
 
   const totalPageArray = Array.from({ length: totalPage }, (_, idx) => idx + 1);
   const paginationArray = Array.from({ length: Math.ceil(totalPage / limit) }, (_, idx) => totalPageArray.slice(idx * limit, idx * limit + limit));
 
   // "<<" 버튼 클릭
   const onFirstPage = () => {
-    setPageGroup(1);
+    setCurrentPage(1);
   };
 
   // "<" 버튼 클릭
   const onPrevPage = () => {
-    setPageGroup((prev) => prev - 1);
+    const prevPageGroupFirstPage = (pageGroup - 1) * limit;
+    if (prevPageGroupFirstPage >= 1) {
+      setCurrentPage(prevPageGroupFirstPage);
+    } else {
+      setCurrentPage(1);
+    }
   };
 
   // ">" 버튼 클릭
   const onNextPage = () => {
-    setPageGroup((prev) => prev + 1);
+    setCurrentPage(pageGroup * limit + 1);
   };
 
   // ">>" 버튼 클릭
   const onLastPage = () => {
-    setPageGroup(Math.ceil(totalPage / limit));
+    setCurrentPage(totalPage);
   };
 
   // page 클릭
@@ -44,17 +48,20 @@ const Pagination = ({ user, setUserList, limit, pagePerUser }) => {
     setSearchParams({ page: String(e.target.textContent) });
   };
 
+  /*
+    "<", "<<", ">", ">>" 버튼을 클릭하면 page
+   */
+
   useEffect(() => {
+    setSearchParams({ page: String(currentPage) });
+  }, [pageGroup]);
+
+  useEffect(() => {
+    setCurrentPage(params);
     setUserList(user.slice(pagePerUser * (Number(params) - 1), pagePerUser * Number(params)));
   }, [params]);
 
-  /*
-    "<<", "<", ">", ">>" 버튼을 클릭하면 해당 pageGroup의 첫 번째 페이지(인덱스)로 이동
-    useEffect 의존성 배열에 pageGroup를 추가하여 pageGroup이 바뀔때만 userList를 변경
-  */
-  useEffect(() => {
-    setUserList(user.slice(pagePerUser * (paginationArray[pageGroup - 1][0] - 1), pagePerUser * paginationArray[pageGroup - 1][0]));
-  }, [pageGroup]);
+  console.log("현재 페이지", currentPage, "페이지 그룹", paginationArray[pageGroup - 1]);
 
   return (
     <Wrapper>
