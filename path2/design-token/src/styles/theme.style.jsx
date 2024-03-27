@@ -3,6 +3,7 @@ const COLORS = {
     blue: "#282190",
     navy: "#100D45",
     yellow: "#FFD02C",
+    beige: "#fceec5",
   },
   secondary: {
     purple: "#a55ced",
@@ -23,9 +24,9 @@ const COLORS = {
 };
 
 const FONT_SIZE = {
-  small: "16px",
-  medium: "18px",
-  large: "20px",
+  small: "10px",
+  medium: "20px",
+  large: "30px",
 };
 
 const FONT_WEIGHT = {
