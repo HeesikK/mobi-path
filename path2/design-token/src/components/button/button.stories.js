@@ -20,7 +20,6 @@ const defaultArgs = {
 export const Primary = {
   args: {
     ...defaultArgs,
-    primary: true,
     size: "small",
   },
 };
@@ -28,7 +27,6 @@ export const Primary = {
 export const Secondary = {
   args: {
     ...defaultArgs,
-    primary: false,
     size: "small",
   },
 };

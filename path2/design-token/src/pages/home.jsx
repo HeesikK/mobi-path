@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import CustomButton from "../components/button";
+import CustomButton from "../components/button/button";
 
 const HomePage = () => {
   return (
