@@ -4,11 +4,14 @@ import CustomButton from "../components/button";
 const HomePage = () => {
   return (
     <Wrapper>
-      <CustomButton variant={"primary"} size={"medium"} shape={"shape"}>
-        primary
+      <CustomButton variant={"primary"} size={"small"} shape={"default"}>
+        small
+      </CustomButton>
+      <CustomButton variant={"secondary"} size={"medium"} shape={"shape"}>
+        medium
       </CustomButton>
       <CustomButton variant={"secondary"} size={"large"} shape={"round"}>
-        secondary
+        large
       </CustomButton>
     </Wrapper>
   );
@@ -18,6 +21,6 @@ export default HomePage;
 
 const Wrapper = styled.div`
   & > * {
-    margin: 50px;
+    margin: 25px;
   }
 `;

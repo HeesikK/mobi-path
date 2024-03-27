@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import PropTypes from "prop-types";
 import { flexCenter } from "../styles/common.style";
 
 const CustomButton = ({ variant, size, shape, children, ...rest }) => {
@@ -10,6 +11,23 @@ const CustomButton = ({ variant, size, shape, children, ...rest }) => {
 };
 
 export default CustomButton;
+
+// customButton의 기본 props값을 defaultProps로 설정
+CustomButton.defaultProps = {
+  variant: "primary",
+  size: "medium",
+  shape: "shape",
+  children: "button",
+};
+
+//해당 컴포넌트에 필요한 props를 정리해놓은 것
+//스토리북의 오른쪽 선택 탭
+CustomButton.propTypes = {
+  variant: PropTypes.oneOf(["primary", "secondary"]),
+  size: PropTypes.oneOf(["small", "medium", "large"]),
+  shape: PropTypes.oneOf(["default", "shape", "round"]),
+  children: PropTypes.string,
+};
 
 const variantCSS = {
   primary: css`
@@ -31,6 +49,7 @@ const sizeCSS = {
   small: css`
     width: 48px;
     height: 24px;
+    padding: 12px 36px;
     font-size: ${({ theme }) => theme.FONT_SIZE.small};
   `,
   medium: css`
@@ -55,7 +74,7 @@ const shapeCSS = {
     border-radius: 8px;
   `,
   round: css`
-    border-radius: 24px;
+    border-radius: 50px;
   `,
 };
 
