@@ -13,6 +13,7 @@ export default {
   // },
 };
 
+// defaultArgs로 기본값을 설정
 const defaultArgs = {
   children: "Button",
 };
@@ -21,6 +22,7 @@ export const Primary = {
   args: {
     ...defaultArgs,
     size: "small",
+    variant: "primary",
   },
 };
 
@@ -28,5 +30,14 @@ export const Secondary = {
   args: {
     ...defaultArgs,
     size: "small",
+    variant: "secondary",
+  },
+};
+
+export const Error = {
+  args: {
+    ...defaultArgs,
+    size: "small",
+    variant: "error",
   },
 };

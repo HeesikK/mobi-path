@@ -10,7 +10,7 @@ const HomePage = () => {
       <CustomButton variant={"secondary"} size={"medium"} shape={"shape"}>
         medium
       </CustomButton>
-      <CustomButton variant={"secondary"} size={"large"} shape={"round"}>
+      <CustomButton variant={"error"} size={"large"} shape={"round"}>
         large
       </CustomButton>
     </Wrapper>

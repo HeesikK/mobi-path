@@ -15,6 +15,10 @@ const variantCSS = {
       background-color: ${({ theme }) => theme.COLORS.secondary["pink"]};
     }
   `,
+
+  error: css`
+    background-color: ${({ theme }) => theme.COLORS.error};
+  `,
 };
 
 const sizeCSS = {
