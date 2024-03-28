@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { S } from "./style";
 
 const CustomInput = ({ variant, size, shape, fontSize, label, placeholder, ...inputProps }) => {
@@ -10,3 +11,21 @@ const CustomInput = ({ variant, size, shape, fontSize, label, placeholder, ...in
 };
 
 export default CustomInput;
+
+CustomInput.defaultProps = {
+  label: "input",
+  placeholder: "내용을 입력해주세요.",
+  variant: "primary",
+  size: "small",
+  shape: "default",
+  fontSize: "small",
+};
+
+CustomInput.propTypes = {
+  label: PropTypes.string,
+  placeholder: PropTypes.string,
+  variant: PropTypes.oneOf(["primary", "secondary", "gray"]),
+  size: PropTypes.oneOf(["small", "medium", "large"]),
+  shape: PropTypes.oneOf(["default", "shape", "round"]),
+  fontSize: PropTypes.oneOf(["small", "medium", "large"]),
+};

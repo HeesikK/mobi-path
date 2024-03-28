@@ -1,8 +1,8 @@
-import CustomButton from "./button";
+import CustomInput from "./input";
 
 export default {
-  title: "Components/CustomButton",
-  component: CustomButton,
+  title: "Components/CustomInput",
+  component: CustomInput,
   parameters: {
     layout: "centered",
   },
@@ -13,9 +13,9 @@ export default {
   // },
 };
 
-// defaultArgs로 기본값을 설정
 const defaultArgs = {
-  children: "Button",
+  label: "input",
+  placeholder: "내용을 입력해주세요",
 };
 
 export const Primary = {
@@ -24,6 +24,7 @@ export const Primary = {
     variant: "primary",
     size: "small",
     shape: "default",
+    fontSize: "small",
   },
 };
 
@@ -33,14 +34,16 @@ export const Secondary = {
     variant: "secondary",
     size: "medium",
     shape: "shape",
+    fontSize: "medium",
   },
 };
 
-export const Error = {
+export const gary = {
   args: {
     ...defaultArgs,
-    variant: "error",
+    variant: "gray",
     size: "large",
     shape: "round",
+    fontSize: "large",
   },
 };
