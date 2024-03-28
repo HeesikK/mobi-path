@@ -24,9 +24,9 @@ const COLORS = {
 };
 
 const FONT_SIZE = {
-  small: "10px",
-  medium: "20px",
-  large: "30px",
+  small: "12px",
+  medium: "18px",
+  large: "24px",
 };
 
 const FONT_WEIGHT = {
