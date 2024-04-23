@@ -1,11 +1,13 @@
 import styled, { css } from "styled-components";
 import { flexAlignCenter } from "../style/common.style";
+import { validate } from "../utils/validate";
 
-const CustomInput = ({ variant, size, shape, fontSize, label, placeholder, name, register, ...inputProps }) => {
+const CustomInput = ({ variant, size, shape, fontSize, label, placeholder, name, register, errors, ...inputProps }) => {
   return (
     <Wrapper>
       <Label fontSize={fontSize}>{label}</Label>
-      <Input variant={variant} size={size} shape={shape} fontSize={fontSize} placeholder={placeholder} {...inputProps} {...register(name)} />
+      <Input variant={variant} size={size} shape={shape} fontSize={fontSize} placeholder={placeholder} {...inputProps} {...register(name, validate[name])} />
+      {errors[name] && <ValidateMessageBox>{errors[name].message}</ValidateMessageBox>}
     </Wrapper>
   );
 };
@@ -88,4 +90,9 @@ const Wrapper = styled.div`
   & > * {
     margin-bottom: 5px;
   }
+`;
+
+const ValidateMessageBox = styled.div`
+  font-size: 12px;
+  color: red;
 `;
