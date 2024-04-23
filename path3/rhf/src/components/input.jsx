@@ -1,11 +1,11 @@
 import styled, { css } from "styled-components";
 import { flexAlignCenter } from "../style/common.style";
 
-const CustomInput = ({ variant, size, shape, fontSize, label, placeholder, ...inputProps }) => {
+const CustomInput = ({ variant, size, shape, fontSize, label, placeholder, name, register, ...inputProps }) => {
   return (
     <Wrapper>
       <Label fontSize={fontSize}>{label}</Label>
-      <Input variant={variant} size={size} shape={shape} fontSize={fontSize} placeholder={placeholder} {...inputProps} />
+      <Input variant={variant} size={size} shape={shape} fontSize={fontSize} placeholder={placeholder} {...inputProps} {...register(name)} />
     </Wrapper>
   );
 };
