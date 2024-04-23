@@ -66,4 +66,5 @@ const Button = styled.button`
   ${({ size }) => sizeCSS[size]}
   ${({ shape }) => shapeCSS[shape]}
   ${flexCenter}
+  font-size: 18px;
 `;

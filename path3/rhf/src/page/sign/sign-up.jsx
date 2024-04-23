@@ -3,6 +3,7 @@ import CustomButton from "../../components/button";
 import CustomInput from "../../components/input";
 import { flexCenter } from "../../style/common.style";
 import { useForm } from "react-hook-form";
+import { inputProps } from "../../consts/input-props";
 
 const SignUp = () => {
   const {
@@ -17,29 +18,9 @@ const SignUp = () => {
 
   return (
     <Wrapper noValidate onSubmit={handleSubmit(onSubmitForm)}>
-      <CustomInput type={"email"} name={"email"} variant={"primary"} size={"large"} shape={"shape"} label={"아이디"} placeholder={"아이디를 입력해주세요"} register={register} errors={errors} />
-      <CustomInput
-        type={"password"}
-        name={"password"}
-        variant={"primary"}
-        size={"large"}
-        shape={"shape"}
-        label={"비밀번호"}
-        placeholder={"비밀번호를 입력해주세요"}
-        register={register}
-        errors={errors}
-      />
-      <CustomInput
-        type={"password"}
-        name={"passwordConfirm"}
-        variant={"primary"}
-        size={"large"}
-        shape={"shape"}
-        label={"비밀번호 확인"}
-        placeholder={"비밀번호 확인"}
-        register={register}
-        errors={errors}
-      />
+      {inputProps.map((el) => (
+        <CustomInput type={el.type} name={el.name} label={el.label} placeholder={el.placeholder} variant={el.variant} size={el.size} shape={el.shape} register={register} errors={errors} />
+      ))}
       <CustomButton variant={"primary"} size={"large"} shape={"shape"}>
         회원가입
       </CustomButton>
