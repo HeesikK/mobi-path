@@ -1,4 +1,7 @@
 export const validate = {
+  nickname: {
+    required: "닉네임은 필수입니다.",
+  },
   email: {
     required: "이메일은 필수입니다.",
     pattern: {
@@ -16,8 +19,5 @@ export const validate = {
       value: 8,
       message: "비밀번호는 8자리 이상이어야 합니다.",
     },
-  },
-  passwordConfirm: {
-    required: "비밀번호 확인은 필수입니다.",
   },
 };
