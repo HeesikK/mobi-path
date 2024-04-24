@@ -2,8 +2,11 @@ import styled from "styled-components";
 import { flexCenter } from "../../style/common.style";
 import CustomInput from "../../components/input";
 import CustomButton from "../../components/button";
+import { useForm } from "react-hook-form";
 
 const SignIn = () => {
+  const {} = useForm();
+
   return (
     <Wrapper>
       <CustomInput variant={"primary"} size={"large"} shape={"shape"} label={"아이디"} placeholder={"아이디를 입력해주세요"} />
