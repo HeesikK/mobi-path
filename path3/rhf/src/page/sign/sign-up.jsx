@@ -16,7 +16,7 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   const onSubmitForm = (data) => {
-    alert(JSON.stringify(data));
+    alert(` ${JSON.stringify(data.nickname)}님 반갑습니다☺️`);
     navigate("/sign-in");
   };
 
